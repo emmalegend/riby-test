@@ -1,26 +1,21 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import {Provider} from 'react-redux';
+import{HashRouter as Router, Route} from 'react-router-dom'
+import Landing from './components/landing';
+import SingleGif from './components/singleGif.jsx'
+import store from './store'
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Provider store={store}>
+      <Router>
+        <>
+        <Route exact path="/" component ={Landing} />
+        <Route exact path="/gif/:id" component ={SingleGif} />
+        </>
+      </Router>
+    </Provider>
   );
-}
+} 
 
 export default App;
